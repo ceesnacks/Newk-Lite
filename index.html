@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova - Modern Website</title>
+
+    <style>
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span,
+        .footer-logo span {
+            color: #8b5cf6;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            background: #8b5cf6;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HOME
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 25px 80px;
+
+            background:
+                radial-gradient(
+                    circle at 75% 30%,
+                    rgba(139, 92, 246, 0.25),
+                    transparent 35%
+                ),
+                #080808;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .small-title {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+
+            font-size: clamp(50px, 8vw, 100px);
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+        }
+
+        .hero h1 span {
+            color: #8b5cf6;
+        }
+
+        .hero-text {
+            max-width: 600px;
+
+            color: #aaa;
+
+            font-size: 18px;
+
+            margin-top: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+
+            margin-top: 35px;
+        }
+
+        .primary-button,
+        .secondary-button {
+            display: inline-block;
+
+            padding: 14px 25px;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .primary-button {
+            background: #8b5cf6;
+        }
+
+        .primary-button:hover {
+            background: #7c3aed;
+            transform: translateY(-3px);
+        }
+
+        .secondary-button {
+            border: 1px solid #444;
+            color: #ddd;
+        }
+
+        .secondary-button:hover {
+            border-color: #8b5cf6;
+            color: white;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            padding: 120px 25px;
+            background: #101010;
+        }
+
+        .section-heading {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-heading p {
+            color: #a78bfa;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(40px, 6vw, 70px);
+
+            max-width: 700px;
+
+            line-height: 1;
+
+            margin-top: 15px;
+        }
+
+        .about-content {
+            max-width: 1200px;
+
+            margin: 70px auto 0;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 80px;
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+
+            line-height: 1.2;
+
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #aaa;
+
+            margin-bottom: 20px;
+        }
+
+        .about-text .primary-button {
+            margin-top: 15px;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+
+            gap: 25px;
+        }
+
+        .feature {
+            display: flex;
+
+            gap: 20px;
+
+            padding: 25px;
+
+            border: 1px solid #292929;
+
+            border-radius: 15px;
+
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            border-color: #8b5cf6;
+            transform: translateX(5px);
+        }
+
+        .feature-number {
+            color: #8b5cf6;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .feature h3 {
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            color: #999;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            padding: 120px 25px;
+
+            background:
+                radial-gradient(
+                    circle at 20% 50%,
+                    rgba(139, 92, 246, 0.15),
+                    transparent 30%
+                ),
+                #080808;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(45px, 6vw, 70px);
+
+            line-height: 1;
+
+            margin-bottom: 25px;
+        }
+
+              /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #222;
+
+            padding: 30px 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+        .footer-logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        footer p {
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                height: 70px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .nav-button {
+                display: none;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero-text {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+
+                max-width: 220px;
+            }
+
+            .hero-buttons a {
+                text-align: center;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+
+                gap: 50px;
+            }
+
+            .about {
+                padding: 90px 20px;
+            }
+
+            .contact {
+                padding: 90px 20px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 15px;
+
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .feature {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                NOVA<span>.</span>
+            </div>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+
+            <a href="#contact" class="nav-button">
+                Get Started
+            </a>
+
+        </nav>
+    </header>
+
+
+    <!-- HOME SECTION -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                WELCOME TO NOVA
+            </p>
+
+            <h1>
+                We build ideas
+                <span>that matter.</span>
+            </h1>
+
+            <p class="hero-text">
+                We create beautiful digital experiences for people,
+                brands and businesses that want to stand out.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#about" class="primary-button">
+                    Explore More
+                </a>
+
+                <a href="#contact" class="secondary-button">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+
+        <div class="section-heading">
+
+            <p>ABOUT US</p>
+
+            <h2>
+                Turning ideas into reality.
+            </h2>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <div class="about-text">
+
+                <h3>
+                    We create digital experiences
+                    people remember.
+                </h3>
+
+                <p>
+                    Nova is a creative digital studio focused
+                    on building modern websites and digital
+                    experiences.
+                </p>
+
+                <p>
+                    We combine creativity, technology and
+                    strategy to help businesses create a
+                    strong online presence.
+                </p>
+
+                <a href="#contact" class="primary-button">
+                    Work With Us
+                </a>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Creative Design
+                        </h3>
+
+                        <p>
+                            Modern and attractive designs
+                            built around your brand.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Responsive
+                        </h3>
+
+                        <p>
+                            Websites that look great on
+                            phones, tablets and computers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Fast & Simple
+                        </h3>
+
+                        <p>
+                            Clean websites designed for
+                            a smooth user experience.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <p class="small-title">
+                    GET IN TOUCH
+                </p>
+
+                <h2>
+                    Let's build something
+                    <span>amazing.</span>
+                </h2>
+
+                <p>
+                    Have an idea or project in mind?
+                    Send us a message and let's talk
+                    about it.
+                </p>
+
+
+                <div class="contact-details">
+
+                    <div>
+
+                        <strong>
+                            Email
+                        </strong>
+
+                        <p>
+                            hello@nova.com
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Phone
+                        </strong>
+
+                        <p>
+                            +234 800 123 4567
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Location
+                        </strong>
+
+                        <p>
+                            Lagos, Nigeria
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <p>
+            © 2026 Nova. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
